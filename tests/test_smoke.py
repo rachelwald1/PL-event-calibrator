@@ -8,14 +8,16 @@ def test_pipeline_smoke(tmp_path):
     csv_path = tmp_path / "m.csv"
     csv_path.write_text(
         "date,home_team,away_team,home_goals,away_goals,market_prob_homewin\n"
-        "2024-08-17,A,B,2,0,0.70\n"  # home win -> y=1
-        "2024-08-18,C,D,0,1,0.45\n"  # home loss -> y=0
-        "2024-08-24,A,C,1,1,0.55\n"  # draw -> y=0 (since not a home win)
-        "2024-09-01,B,D,0,2,0.40\n"  # home loss -> y=0
-        "2024-09-15,C,A,3,1,0.58\n"  # home win -> y=1
-        "2024-09-22,D,B,2,2,0.42\n"  # draw -> y=0
-        "2024-09-29,A,D,1,3,0.65\n"  # home loss -> y=0
-        "2024-10-06,B,C,2,1,0.48\n"  # home win -> y=1
+        "2024-08-17,A,B,2,0,0.70\n"  # 1
+        "2024-08-18,C,D,0,1,0.45\n"  # 0
+        "2024-08-24,A,C,1,1,0.55\n"  # 0
+        "2024-09-01,B,D,2,1,0.52\n"  # 1
+        "2024-09-15,C,A,3,1,0.58\n"  # 1
+        "2024-09-22,D,B,0,2,0.42\n"  # 0
+        "2024-09-29,A,D,1,3,0.65\n"  # 0
+        "2024-10-06,B,C,2,1,0.48\n"  # 1
+        "2024-10-13,C,B,1,2,0.50\n"  # 0
+        "2024-10-20,D,A,2,0,0.40\n"  # 1
     )
 
     df = load_matches_csv(str(csv_path))
